@@ -15,7 +15,26 @@ function setConnected(connected) {
     $("#messages").html("");
 }
 
+function validateUserName(txtInput){
+  var roomTxt = txtInput.val();
+  var valid = /^[a-zA-Z0-9]+$/.test(roomTxt);
+  if(!valid){
+    txtInput.val('');
+    txtInput.css("border-color","red");
+    txtInput.attr("placeholder", "No spaces! Only letters and numbers!");
+    return false;
+  }
+  return true;
+}
+
+function connectionParamsValid() {
+  return validateUserName($("#roomName")) && validateUserName($("#nickName"));
+}
+
 function connect() {
+    $("#nickName").css("border-color","");
+    $("#roomName").css("border-color","");
+    if(!connectionParamsValid()) return;
     var socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
@@ -37,21 +56,28 @@ function disconnect() {
 
 function sendMessage() {
     stompClient.send("/app/"+$("#roomName").val()+"/message", {}, JSON.stringify({'user': $("#nickName").val(),'message': $("#message").val()}));
+    $("#message").val('');
 }
 
 function showMessage(user,message) {
   if(user == $("#nickName").val()){
-    $("#messages").append('<tr><td><span class="myUser">'+user+':</span>'+ message + '</td></tr>');
+    $("#messages").append('<tr><td><span class="myUser">'+user+':</span> '+ message + '</td></tr>');
   }else{
-    $("#messages").append('<tr><td><span class="otherUser">'+user+':</span>'+ message + '</td></tr>');
+    $("#messages").append('<tr><td><span class="otherUser">'+user+':</span> '+ message + '</td></tr>');
   }
 }
 
 $(function () {
+    setConnected(false);
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendMessage(); });
     $("#conversation").hide();
+    $("#nickName").val('');
+    $("#roomName").val('');
+    $("#message").val('');
+    $("#nickName").css("border-color","");
+    $("#roomName").css("border-color","");
     $( "#message" ).keypress(function(e) {
       if(e.which == 13) {
           sendMessage();
