@@ -31,7 +31,11 @@
 
 
   <div id="main-content" class="container">
-
+  <div class="page-header">
+    <h2>WebSocket-Chat Demo</h2>
+    <p>Simple Web Chat Application developed for testing Spring WebSocket</p>
+    <p>Source Code: <a href="https://github.com/piergiuseppe82/websocket-chat" target="_blank">https://github.com/piergiuseppe82/websocket-chat</a></p>
+  </div>
     <div class="row">
       <div class="col-md-8">
         <form class="form-inline">
@@ -56,17 +60,7 @@
     </div>
 
     <div class="row" id="conversation">
-      <div class="col-md-12">
-        <hr>
-        <label for="message">Message</label>
-        <div class="input-group">
-          <input type="text" id="message" class="form-control" placeholder="Your Message here...">
-          <span class="input-group-btn">
-            <button id="send" class="btn btn-default" type="button">Send</button>
-          </span>
-        </div>
-        <hr>
-      </div>
+
       <div class="col-md-12">
         <table class="table table-striped">
           <thead>
@@ -78,6 +72,18 @@
           </tbody>
         </table>
       </div>
+      <div class="col-md-12">
+        <hr>
+        <label for="message">Message</label>
+        <div class="input-group">
+          <input type="text" id="message" class="form-control" placeholder="Your Message here...">
+          <span class="input-group-btn">
+            <button id="send" class="btn btn-default" type="button">Send</button>
+          </span>
+        </div>
+        <hr>
+      </div>
+
     </div>
 
   </div>

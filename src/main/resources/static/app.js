@@ -22,7 +22,7 @@ function connect() {
         setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/rooms/'+$("#roomName").val()+'/messages', function (resp) {
-            showGreeting(JSON.parse(resp.body).user,JSON.parse(resp.body).message);
+            showMessage(JSON.parse(resp.body).user,JSON.parse(resp.body).message);
         });
     });
 }
@@ -35,11 +35,11 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-function sendName() {
+function sendMessage() {
     stompClient.send("/app/"+$("#roomName").val()+"/message", {}, JSON.stringify({'user': $("#nickName").val(),'message': $("#message").val()}));
 }
 
-function showGreeting(user,message) {
+function showMessage(user,message) {
   if(user == $("#nickName").val()){
     $("#messages").append('<tr><td><span class="myUser">'+user+':</span>'+ message + '</td></tr>');
   }else{
@@ -50,6 +50,11 @@ function showGreeting(user,message) {
 $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
-    $( "#send" ).click(function() { sendName(); });
+    $( "#send" ).click(function() { sendMessage(); });
     $("#conversation").hide();
+    $( "#message" ).keypress(function(e) {
+      if(e.which == 13) {
+          sendMessage();
+      }
+    });
 });

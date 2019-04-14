@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 public class MessageController {
       @MessageMapping("/{id}/message")
       @SendTo("/rooms/{id}/messages")
-      public Message greeting(@DestinationVariable String id, Message message) throws Exception {
+      public Message message(@DestinationVariable String id, Message message) throws Exception {
           System.out.println(id);
           return message;
       }
