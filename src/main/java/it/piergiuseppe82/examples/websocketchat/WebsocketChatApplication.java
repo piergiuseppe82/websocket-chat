@@ -7,6 +7,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class WebsocketChatApplication extends SpringBootServletInitializer {
+
+	/*************************************************************************************
+							Extension of SpringBootServletInitializer and Override
+							not required for  Spring Boot Start with Embedded Server.
+
+							Required for Deployable WAR in other Server
+	*************************************************************************************/
+
 	@Override
   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
       return application.sources(WebsocketChatApplication.class);

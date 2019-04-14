@@ -31,6 +31,8 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!--
+					NOT required Static resources exported on Static Web resources
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>webjars-locator-core</artifactId>
@@ -55,9 +57,8 @@
 			<artifactId>jquery</artifactId>
 			<version>3.1.0</version>
 		</dependency>
+	-->
 
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-test</artifactId> <scope>test</scope> </dependency> <dependency> <groupId>javax.servlet</groupId> <artifactId>javax.servlet-api</artifactId>
-		<scope>provided</scope> </dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

@@ -30,3 +30,4 @@ HELP.md
 
 ### Atom ###
 .sts4-cache
+.attach*
