@@ -89,7 +89,8 @@
 					<outputDirectory>target</outputDirectory>
 					<warName>ROOT</warName>
 				</configuration>
-			</plugins>
+			</plugin>
+		</plugins>
 		</build>
 
 	</project>
