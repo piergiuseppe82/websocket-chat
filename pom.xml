@@ -6,7 +6,6 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.4.RELEASE</version>
 		<relativePath/>
-		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>it.piergiuseppe82.examples</groupId>
 	<artifactId>websocket-chat</artifactId>
@@ -20,7 +19,6 @@
 		<fabric8-maven-plugin.version>4.1.0</fabric8-maven-plugin.version>
 	</properties>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -33,88 +31,60 @@
 		</dependency>
 
 		<dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!--
-					NOT required Static resources exported on Static Web resources
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>webjars-locator-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>sockjs-client</artifactId>
-			<version>1.0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>stomp-websocket</artifactId>
-			<version>2.3.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>3.3.7</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery</artifactId>
-			<version>3.1.0</version>
-		</dependency>
-	-->
-
-
 	</dependencies>
-
- <build>
+	
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-          <profiles>
-            <profile>local</profile>
-          </profiles>
-        </configuration>
+					<profiles>
+						<profile>local</profile>
+					</profiles>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
 	<profiles>
-	    <profile>
-	      <id>local</id>
-	      <activation>
-	        <activeByDefault>true</activeByDefault>
-	      </activation>
-	    </profile>
-	    <profile>
-	      <id>openshift</id>
-	      <build>
-	        <plugins>
-	          <plugin>
-	            <groupId>io.fabric8</groupId>
-	            <artifactId>fabric8-maven-plugin</artifactId>
-	            <version>${fabric8-maven-plugin.version}</version>
-	            <executions>
-	              <execution>
-	                <goals>
-	                  <goal>resource</goal>
-	                  <goal>build</goal>
-										<goal>deploy</goal>
-	                </goals>
-	              </execution>
-	            </executions>
-	          </plugin>
-	        </plugins>
-	      </build>
-	    </profile>
-	  </profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>openshift</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>fabric8-maven-plugin</artifactId>
+						<version>${fabric8-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>resource</goal>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+
+
 </project>
