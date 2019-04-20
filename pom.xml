@@ -31,6 +31,12 @@
 			<!-- <scope>provided</scope> -->
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<!--
 					NOT required Static resources exported on Static Web resources
 		<dependency>
@@ -59,20 +65,16 @@
 		</dependency>
 	-->
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+
 	</dependencies>
 
-	<!-- <build>
+ <build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.3</version>
@@ -81,8 +83,8 @@
 					<outputDirectory>target</outputDirectory>
 					<warName>ROOT</warName>
 				</configuration>
-			</plugin>
+			</plugin> -->
 		</plugins>
-	</build> -->
+	</build>
 
 </project>
